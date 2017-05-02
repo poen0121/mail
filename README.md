@@ -1,5 +1,6 @@
 # mail
-PHP Library
+PHP Library ( PHP >= 5 ) CLI,CGI
+
 > About
 
 	Send HTML formatted messages based on SMTP, only one recipient.

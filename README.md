@@ -13,7 +13,11 @@ PHP Library
 	sendmail_from - sender mail
 
 	Use the mb_send_mail function to send mail.
-  
+	
+> Learning Documents
+
+    Please read `readme.php` document.
+    
 > Example
 
 	$hpl_mail=new hpl_mail();

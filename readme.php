@@ -21,7 +21,7 @@
 
 >> About
 
-	GitHub : https://github.com/poen0121/mial
+	GitHub : https://github.com/poen0121/mail
 
 	Send HTML formatted messages based on SMTP, only one recipient.
 

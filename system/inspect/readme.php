@@ -3,7 +3,7 @@
 >> Information
 
 	Title		: hpl_inspect function
-	Revision	: 3.1.0
+	Revision	: 3.2.0
 	Notes		:
 
 	Revision History:
@@ -24,6 +24,7 @@
 	01-06-2017		Poen		01-06-2017	Poen		Improve is_time function.
 	01-06-2017		Poen		01-06-2017	Poen		Improve is_datetime function.
 	04-11-2017		Poen		04-11-2017	Poen		Improve is_ip function special purposes.
+	06-07-2017		Poen		06-07-2017	Poen		Remove is_number_format function.
 	---------------------------------------------------------------------------
 
 >> About
@@ -35,26 +36,6 @@
 	==============================================================
 	Include file
 	Usage : include('inspect/main.inc.php');
-	==============================================================
-
-	==============================================================
-	Verification number string for each group of thousand comma (",").
-	Usage : hpl_inspect::is_number_format($data);
-	Param : string $data (numeric string)
-	Return : boolean
-	--------------------------------------------------------------
-	Example :
-	hpl_inspect::is_number_format('5,666.00');
-	Output >> TRUE
-	Example :
-	hpl_inspect::is_number_format('-5,666.00');
-	Output >> TRUE
-	Example :
-	hpl_inspect::is_number_format('5,666');
-	Output >> TRUE
-	Example :
-	hpl_inspect::is_number_format('-5,666');
-	Output >> TRUE
 	==============================================================
 
 	==============================================================
@@ -84,7 +65,7 @@
 	==============================================================
 
 	==============================================================
-	Date format verification.
+	Date format verification, if YYYY beyond calculation range 1 ~ 32767 returns false on failure.
 	Usage : hpl_inspect::is_date($data);
 	Param : string $data (date YYYY-MM-DD)
 	Return : boolean
@@ -106,7 +87,7 @@
 	==============================================================
 
 	==============================================================
-	Datetime format verification.
+	Datetime format verification, if YYYY beyond calculation range 1 ~ 32767 returns false on failure.
 	Usage : hpl_inspect::is_datetime($data);
 	Param : string $data (datetime YYYY-MM-DD hh:ii:ss)
 	Return : boolean

@@ -5,18 +5,6 @@ if (!class_exists('hpl_inspect')) {
 	 * @about - inspect data format.
 	 */
 	class hpl_inspect {
-		/** Verification number string for each group of thousand comma (",").
-		 * @access - public function
-		 * @param - string $data (numeric string)
-		 * @return - boolean
-		 * @usage - hpl_inspect::is_number_format($data);
-		 */
-		public static function is_number_format($data = null) {
-			if (!hpl_func_arg :: delimit2error() && !hpl_func_arg :: string2error(0)) {
-				return (bool) preg_match('/^(\+|-)?([0-9]|[1-9]{1}[0-9]{0,2}|([1-9]{1}[0-9]{0,2}([,]{1}[0-9]{3})+)*){1}([.]{1}[0-9]*){0,1}$/i', $data);
-			}
-			return false;
-		}
 		/** Iconv encoding type code verification.
 		 * @access - public function
 		 * @param - string $data (encoding type code)
@@ -59,7 +47,7 @@ if (!class_exists('hpl_inspect')) {
 			}
 			return false;
 		}
-		/** Date format verification.
+		/** Date format verification, if YYYY beyond calculation range 1 ~ 32767 returns false on failure.
 		 * @access - public function
 		 * @param - string $data (date YYYY-MM-DD)
 		 * @return - boolean
@@ -95,7 +83,7 @@ if (!class_exists('hpl_inspect')) {
 			}
 			return false;
 		}
-		/** Datetime format verification.
+		/** Datetime format verification, if YYYY beyond calculation range 1 ~ 32767 returns false on failure.
 		 * @access - public function
 		 * @param - string $data (datetime YYYY-MM-DD hh:ii:ss)
 		 * @return - boolean

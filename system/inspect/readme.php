@@ -3,7 +3,7 @@
 >> Information
 
 	Title		: hpl_inspect function
-	Revision	: 3.2.0
+	Revision	: 3.3.0
 	Notes		:
 
 	Revision History:
@@ -25,6 +25,7 @@
 	01-06-2017		Poen		01-06-2017	Poen		Improve is_datetime function.
 	04-11-2017		Poen		04-11-2017	Poen		Improve is_ip function special purposes.
 	06-07-2017		Poen		06-07-2017	Poen		Remove is_number_format function.
+	07-03-2017		Poen		07-03-2017	Poen		Improve the program.
 	---------------------------------------------------------------------------
 
 >> About

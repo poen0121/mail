@@ -30,7 +30,7 @@ if (!class_exists('hpl_mail')) {
 			$caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
 			$caller = end($caller);
 			$message = __CLASS__ . '::' . $caller['function'] . '(): ' . $message;
-			//echo message
+			//response message
 			hpl_error :: cast($message, $errno, 3);
 			/* Don't execute PHP internal error handler */
 			return true;
@@ -53,7 +53,7 @@ if (!class_exists('hpl_mail')) {
 		 */
 		public function isp($host = null) {
 			if (!hpl_func_arg :: delimit2error() && !hpl_func_arg :: string2error(0)) {
-				if (strlen($host) == 0) {
+				if (!isset ($host { 0 })) {
 					hpl_error :: cast(__CLASS__ . '::' . __FUNCTION__ . '(): Empty SMTP ISP host supplied as input', E_USER_NOTICE, 1);
 				} else {
 					if (ini_set('SMTP', $host) !== false) {
@@ -93,7 +93,7 @@ if (!class_exists('hpl_mail')) {
 		 */
 		public function sender_name($name = null) {
 			if (!hpl_func_arg :: delimit2error() && !hpl_func_arg :: string2error(0)) {
-				if (strlen($name) == 0) {
+				if (!isset ($name { 0 })) {
 					hpl_error :: cast(__CLASS__ . '::' . __FUNCTION__ . '(): Empty sender name supplied as input', E_USER_NOTICE, 1);
 				} else {
 					$this->SIGN_SENDER_NAME = $name;

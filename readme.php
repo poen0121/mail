@@ -3,7 +3,7 @@
 >> Information
 
 	Title		: hpl_mail function
-	Revision	: 2.9.0
+	Revision	: 2.10.0
 	Notes		:
 
 	Revision History:
@@ -11,7 +11,7 @@
 	---------------------------------------------------------------------------
 	05-24-2013		Poen		05-24-2013	Poen		Create the program.
 	08-08-2016		Poen		08-08-2016	Poen		Reforming the program.
-	09-07-2016		Poen		12-22-2016	Poen		Improve the program.
+	09-07-2016		Poen		07-03-2017	Poen		Improve the program.
 	09-29-2016		Poen		11-21-2016	Poen		Debug the program error messages.
 	02-22-2017		Poen		02-22-2017	Poen		Debug isp function.
 	02-22-2017		Poen		02-22-2017	Poen		Debug sender_name function.

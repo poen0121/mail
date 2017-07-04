@@ -1,6 +1,6 @@
 <?php
 if (!class_exists('hpl_inspect')) {
-	include (str_replace('\\', '/', dirname(__FILE__)) . '/system/func_arg/main.inc.php');
+	include (strtr(dirname(__FILE__), '\\', '/') . '/system/func_arg/main.inc.php');
 	/**
 	 * @about - inspect data format.
 	 */

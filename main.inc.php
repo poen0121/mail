@@ -1,6 +1,6 @@
 <?php
 if (!class_exists('hpl_mail')) {
-	include (str_replace('\\', '/', dirname(__FILE__)) . '/system/inspect/main.inc.php');
+	include (strtr(dirname(__FILE__), '\\', '/') . '/system/inspect/main.inc.php');
 	/**
 	 * @about - HTML mail send.
 	 * @return - object

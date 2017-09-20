@@ -14,27 +14,6 @@ if (!class_exists('hpl_mail')) {
 			$this->SIGN_SENDER_NAME = 'Service';
 			hpl_func_arg :: delimit2error();
 		}
-		/** Error handler.
-		 * @access - private function
-		 * @param - integer $errno (error number)
-		 * @param - string $message (error message)
-		 * @return - boolean|null
-		 * @usage - set_error_handler(__CLASS__.'::ErrorHandler');
-		 */
-		private static function ErrorHandler($errno = null, $message = null) {
-			if (!(error_reporting() & $errno)) {
-				// This error code is not included in error_reporting
-				return;
-			}
-			//replace message target function
-			$caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
-			$caller = end($caller);
-			$message = __CLASS__ . '::' . $caller['function'] . '(): ' . $message;
-			//response message
-			hpl_error :: cast($message, $errno, 3);
-			/* Don't execute PHP internal error handler */
-			return true;
-		}
 		/** Set SMTP ISP, the default from php.ini.
 		 * @access - public function
 		 * @param - string $host (ISP host)
@@ -205,9 +184,7 @@ if (!class_exists('hpl_mail')) {
 							$headers .= "BCC: " . implode(',', $this->BCC_LIST) . PHP_EOL;
 							$this->BCC_LIST = array ();
 						}
-						set_error_handler(__CLASS__ . '::ErrorHandler');
 						$result = mb_send_mail($toMail, $subject, $message, $headers); //send mail
-						restore_error_handler();
 						ini_set('max_execution_time', $oldTimeout); //reset timeout
 					}
 				} else {

@@ -165,27 +165,32 @@ if (!class_exists('hpl_mail')) {
 					elseif (!hpl_inspect :: is_mail($SIGN_SENDER_MAIL)) {
 						hpl_error :: cast(__CLASS__ . '::' . __FUNCTION__ . '(): Incorrect sender e-mail format', E_USER_WARNING, 1);
 					} else {
-						$oldTimeout = ini_get('max_execution_time');
-						ini_set('max_execution_time', '0'); //set timeout
-						mb_internal_encoding('UTF-8'); //set internal encoding
-						//HTML
-						$headers = "MIME-Version: 1.0" . PHP_EOL;
-						$headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
-						$headers .= "From: " . mb_encode_mimeheader($this->SIGN_SENDER_NAME, 'UTF-8') . " <" . $SIGN_SENDER_MAIL . ">" . PHP_EOL;
-						//CC mail group
-						$this->CC_LIST = array_unique($this->CC_LIST);
-						if (count($this->CC_LIST) > 0) {
-							$headers .= "CC: " . implode(',', $this->CC_LIST) . PHP_EOL;
-							$this->CC_LIST = array ();
+						$mxrecords = null;
+						$domain = explode('@', $toMail);
+						//check DNS MX
+						if (getmxrr($domain[1], $mxrecords)) {
+							$oldTimeout = ini_get('max_execution_time');
+							ini_set('max_execution_time', '0'); //set timeout
+							mb_internal_encoding('UTF-8'); //set internal encoding
+							//HTML
+							$headers = "MIME-Version: 1.0" . PHP_EOL;
+							$headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
+							$headers .= "From: " . mb_encode_mimeheader($this->SIGN_SENDER_NAME, 'UTF-8') . " <" . $SIGN_SENDER_MAIL . ">" . PHP_EOL;
+							//CC mail group
+							$this->CC_LIST = array_unique($this->CC_LIST);
+							if (count($this->CC_LIST) > 0) {
+								$headers .= "CC: " . implode(',', $this->CC_LIST) . PHP_EOL;
+								$this->CC_LIST = array ();
+							}
+							//BCC mail group
+							$this->BCC_LIST = array_unique($this->BCC_LIST);
+							if (count($this->BCC_LIST) > 0) {
+								$headers .= "BCC: " . implode(',', $this->BCC_LIST) . PHP_EOL;
+								$this->BCC_LIST = array ();
+							}
+							$result = mb_send_mail($toMail, $subject, $message, $headers); //send mail
+							ini_set('max_execution_time', $oldTimeout); //reset timeout
 						}
-						//BCC mail group
-						$this->BCC_LIST = array_unique($this->BCC_LIST);
-						if (count($this->BCC_LIST) > 0) {
-							$headers .= "BCC: " . implode(',', $this->BCC_LIST) . PHP_EOL;
-							$this->BCC_LIST = array ();
-						}
-						$result = mb_send_mail($toMail, $subject, $message, $headers); //send mail
-						ini_set('max_execution_time', $oldTimeout); //reset timeout
 					}
 				} else {
 					hpl_error :: cast(__CLASS__ . '::' . __FUNCTION__ . '(): Incorrect e-mail format', E_USER_NOTICE, 1);

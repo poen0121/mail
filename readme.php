@@ -3,7 +3,7 @@
 >> Information
 
 	Title		: hpl_mail function
-	Revision	: 2.10.1
+	Revision	: 2.10.2
 	Notes		:
 
 	Revision History:
@@ -17,6 +17,7 @@
 	02-22-2017		Poen		02-22-2017	Poen		Debug sender_name function.
 	02-22-2017		Poen		02-22-2017	Poen		Debug send function.
 	03-27-2017		Poen		03-27-2017	Poen		Improve send function.
+	12-08-2017		Poen		12-08-2017	Poen		Additional MX authentication mechanism.
 	---------------------------------------------------------------------------
 
 >> About
